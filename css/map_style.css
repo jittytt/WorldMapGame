@@ -1,0 +1,44 @@
+body {
+    background-color: #f4f4f4;
+  }
+  
+  .card {
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    border: none;
+    margin-top: 20px;
+  }
+  
+  .card-title {
+    color:blueviolet !important;
+    font-size: 1.75rem;
+  }
+  
+  .card-text {
+    font-size: 1.25rem;
+  }
+  
+  .map-container {
+    padding: 15px;
+    background: #fff;
+    border-radius: 0.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    font-weight: bold;
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+
+  img[usemap] {
+    border: none;
+    height: auto;
+    max-width: 100%;
+  }
+  
