@@ -10,3 +10,22 @@ let questions = new Map([
     [9, "Columbus found which continent?"],
     [10, "Where is Amazon River?"]
 ]);
+
+let answers = new Map([
+    [1, "Asia"],
+    [2, "Asia"],
+    [3, "Australia"],
+    [4, "Australia"],
+    [5, "Asia"],
+    [6, "Africa"],
+    [7, "Europe"],
+    [8, "Africa"],
+    [9, "North America"],
+    [10, "South America"],
+]);
+
+
+function buttonActivator()
+{
+    document.getElementById('primaryButton').hidden = false;
+}
