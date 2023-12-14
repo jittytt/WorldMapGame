@@ -114,7 +114,7 @@ const SubmitButtonEnable=(id)=>
 //initialize score as 0
 let correctAnswers = 0;
 //function to check the answer
-const answerComparision = () => {
+const answerComparison = () => {
     document.getElementById('submit-button').hidden = true;
     document.getElementById('next-question-button').hidden = false;
     document.getElementById('map-cont').style.pointerEvents = "none";
@@ -147,10 +147,48 @@ const answerComparision = () => {
     if(totalNumberOfVisitedQuestions == numberOfQuestions)
     {
         //rename the next button as View result
+        localStorage.setItem('totalScore', correctAnswers);
         document.getElementById('next-question-button').textContent="View Result";
         document.getElementById('next-question-button').href='result.html';
-        localStorage.setItem('totalScore', correctAnswers);
-        evaluateScore();
+        
     }
 
+}
+
+//jitty-dev
+
+const evaluateScore = () => {
+    let correctAnswers = localStorage.getItem("totalScore");
+    let totalQns = localStorage.getItem("myQuestions");
+    let name = localStorage.getItem("myName");
+    capName = capitalizeFirstLetter(name);
+
+    let score = () => (100 * correctAnswers)/totalQns;
+    let percentage = score();
+
+    let compliment = document.createElement("h3");
+    let finalScore = document.createElement("h4");
+
+    if(percentage >= 50) {
+
+        compliment.textContent = "Congartulations! "+ capName;
+        compliment.setAttribute("style","color: #1d7342");
+
+    }
+    else {
+
+        compliment.textContent = "Sorry "+capName+"!! Better Luck Next Time!";
+        compliment.setAttribute("class","text-warning");
+
+    }
+
+    document.getElementById("remark").append(compliment);
+    
+    finalScore.textContent = percentage+"%";
+    document.getElementById("score-calc").append(finalScore);
+
+}
+
+const capitalizeFirstLetter = (inputString) => {
+    return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 }
