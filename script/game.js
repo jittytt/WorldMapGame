@@ -10,3 +10,14 @@ let questions = new Map([
     [9, "Columbus found which continent?"],
     [10, "Where is Amazon River?"]
 ]);
+
+let myName;
+let myQuestions;
+const storeValues = () =>{
+    
+    myName = document.getElementById("firstName").value;
+    myQuestions = document.getElementById("number").value;//gets element's values to variables
+
+    localStorage.setItem('myName',myName);
+    localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
+}
