@@ -27,7 +27,7 @@ let answers = new Map([
 
 function buttonActivator()
 {
-    if(document.getElementById('firstName').value != null)
+    if(document.getElementById('firstName').value != '')
     {
         document.getElementById('primaryButton').hidden = false;
     }
