@@ -27,10 +27,11 @@ let answers = new Map([
 //initialize score as 0
 let correctAnswers = 0;
 //function to check the answer
-const answerComparision = (id) => {
+const answerComparision = () => {
+    document.getElementById('submit-button').hidden = true;
     document.getElementById('next-question-button').hidden = false;
     document.getElementById('map-cont').style.pointerEvents = "none";
-    if(id == ans)
+    if(answerID == ans)
     {
         correctAnswers++;
         totalNumberOfVisitedQuestions++;
@@ -58,6 +59,10 @@ const answerComparision = (id) => {
 
     if(totalNumberOfVisitedQuestions == numberOfQuestions)
     {
+        //rename the next button as View result
+        document.getElementById('next-question-button').textContent="View Result";
+        document.getElementById('next-question-button').href='result.html';
+        localStorage.setItem('totalScore', correctAnswers);
         evaluateScore();
     }
 
