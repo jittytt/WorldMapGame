@@ -24,30 +24,41 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
+//initialize score as 0
+let correctAnswers = 0;
+//function to check the answer
+const answerComparision = (id) => {
+    document.getElementById('next-question-button').hidden = false;
 
-function buttonActivator()
-{
-    document.getElementById('primaryButton').hidden = false;
+    if(id == ans)
+    {
+        correctAnswers++;
+        totalNumberOfVisitedQuestions++;
+        //display Correct
+        document.getElementById('correct-or-wrong').textContent = "CORRECT!";
+        document.getElementById('correct-or-wrong').style.color ="green";
+        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
+        document.getElementById('correct-or-wrong').style.fontSize ="32px";
+
+        console.log('Correct Answers:' + correctAnswers);
+        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
+    }
+    else
+    {
+        totalNumberOfVisitedQuestions++;
+        //display wrong
+        document.getElementById('correct-or-wrong').textContent = "Wrong!";
+        document.getElementById('correct-or-wrong').style.color ="red";
+        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
+        document.getElementById('correct-or-wrong').style.fontSize ="32px";
+
+        console.log('Correct Answers:' + correctAnswers);
+        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
+    }
+
+    if(totalNumberOfVisitedQuestions == numberOfQuestions)
+    {
+        evaluateScore();
+    }
+
 }
-
-//initialize score and asked questions as 0
-let score=0;
-let numOfaskedQ=0;
-function checkAnswer(id){
-    numOfaskedQ+=1;
-    if(id==answer){
-        score+=1;
-        //display correct in a tag
-        document.getElementById('correct-or-wrong').innerHTML="Correct Answer";
-    }
-    else{
-        //display wrong in a tag
-        document.getElementById('correct-or-wrong').innerHTML="Wrong Answer";
-    }
-    //activate next question button
-    document.getElementById('next-question-button').disabled = true;
-    //call the function to calculate score%
-    if(numOfaskedQ==qsArr.length){
-        calculateTotalScore(score);
-    }    
-    }
