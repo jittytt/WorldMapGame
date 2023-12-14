@@ -11,7 +11,6 @@ let questions = new Map([
     [10, "Where is Amazon River?"]
 ]);
 
-
 let answers = new Map([
     [1, "Asia"],
     [2, "Asia"],
@@ -26,22 +25,7 @@ let answers = new Map([
 ]);
 
 
-// vyshnav-dev
-let myName;
-let myQuestions;
-const storeValues = () =>{
-    
-    myName = document.getElementById("firstName").value;
-    myQuestions = document.getElementById("number").value;//gets element's values to variables
-
-    localStorage.setItem('myName',myName);
-    localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
-}
-//===================
-
 function buttonActivator()
 {
     document.getElementById('primaryButton').hidden = false;
 }
-
-
