@@ -10,3 +10,22 @@ let questions = new Map([
     [9, "Columbus found which continent?"],
     [10, "Where is Amazon River?"]
 ]);
+//initialize score and asked questions as 0
+let score=0;
+let numOfaskedQ=0;
+function checkAnswer(id){
+    ans=document.getElementById(id).value;
+    numOfaskedQ+=1;
+    if(ans==ansArr[1].answer){
+        score+=1;
+        //display correct in a tag
+    }
+    else{
+        //display wrong in a tag
+    }
+    //activate next question button
+    document.getElementById('nextButton').disabled = true;
+    if(numOfaskedQ==qsArr.length){
+        calculateTotalScore(score);
+    }    
+    }
