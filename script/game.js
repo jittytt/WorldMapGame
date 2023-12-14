@@ -70,3 +70,33 @@ let totalNumberOfVisitedQuestions = 0;
   visitedQuestions.push(randomNumber);
   return randomNumber;
 }
+
+//nigin-dev
+//This function is used for Generating random questions
+const questionGeneration = () => {
+
+    document.getElementById('map-cont').style.pointerEvents = "auto";
+    //Setting the question field as Empty
+    document.getElementById('correct-or-wrong').textContent = ""; 
+    
+    //Hiding the button until the player selects an answer
+    document.getElementById('next-question-button').hidden = true; 
+
+    numberOfQuestions = localStorage.getItem('myQuestions');
+    console.log(numberOfQuestions);
+    let randomNumberGenerated;
+
+    //To check if the required number of questions have been visited
+    if(totalNumberOfVisitedQuestions < numberOfQuestions)
+    {
+        randomNumberGenerated = randomNumberGeneration();
+        console.log(randomNumberGenerated);
+
+        //Storing the values in 2 variables for future use
+        que = questions.get(randomNumberGenerated);
+        ans = answers.get(randomNumberGenerated);
+
+        //Printing the question in the webpage
+        document.getElementById("question-part").innerHTML=que;
+    }
+}
