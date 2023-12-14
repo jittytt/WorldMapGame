@@ -24,6 +24,93 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
+
+//nigin-dev
+/*This function is used to activate the  "Get Started" button only when the user has input something 
+has his/her name */
+const buttonActivator = () => {
+
+    if(document.getElementById('firstName').value != '')
+    {
+        document.getElementById('primaryButton').hidden = false;
+    }
+    else
+    {
+        document.getElementById('primaryButton').hidden = true;
+    }
+}
+
+// vyshnav-dev
+/*This function is used to store the Player's name and total number of questions to the localstorage
+ when the player decides to start his/her game */
+
+let myName;
+let myQuestions;
+const storeValues = () =>{
+    
+    myName = document.getElementById("firstName").value;
+    myQuestions = document.getElementById("number").value;//gets element's values to variables
+
+    localStorage.setItem('myName',myName);
+    localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
+}
+
+// elena-dev
+const visitedQuestions = [];  //This array avoids the duplicacy of questions
+let totalNumberOfVisitedQuestions = 0;
+
+ const randomNumberGeneration = () => {
+  let randomNumber;
+
+  do {
+    // Generates a random number between 1 and 10
+    randomNumber = Math.floor(Math.random() * 10) + 1; 
+  } while (visitedQuestions.includes(randomNumber)); //The loop exits until it finds a unique number.
+
+  visitedQuestions.push(randomNumber);
+  return randomNumber;
+}
+
+//nigin-dev
+//This function is used for Generating random questions
+const questionGeneration = () => {
+
+    document.getElementById('map-cont').style.pointerEvents = "auto";
+    //Setting the question field as Empty
+    document.getElementById('correct-or-wrong').textContent = ""; 
+    
+    //Hiding the button until the player selects an answer
+    document.getElementById('next-question-button').hidden = true; 
+
+    numberOfQuestions = localStorage.getItem('myQuestions');
+    console.log(numberOfQuestions);
+    let randomNumberGenerated;
+
+    //To check if the required number of questions have been visited
+    if(totalNumberOfVisitedQuestions < numberOfQuestions)
+    {
+        randomNumberGenerated = randomNumberGeneration();
+        console.log(randomNumberGenerated);
+
+        //Storing the values in 2 variables for future use
+        que = questions.get(randomNumberGenerated);
+        ans = answers.get(randomNumberGenerated);
+
+        //Printing the question in the webpage
+        document.getElementById("question-part").innerHTML=que;
+    }
+}
+
+
+let answerID;
+ 
+const SubmitButtonEnable=(id)=>
+{
+    answerID = id;  
+    document.getElementById('submit-button').hidden = false;
+}
+
+//boby-dev
 //initialize score as 0
 let correctAnswers = 0;
 //function to check the answer
