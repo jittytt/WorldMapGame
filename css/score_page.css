@@ -1,0 +1,22 @@
+body {
+    background-image: url("../assets/worldmap-3.avif");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  } 
+
+.score-board {
+    height: 250px;
+    width: 750px;
+    background-color: rgba(175, 168, 168, 0.5);
+    color: black;
+    text-align: center;
+    border-radius: 20px;
+  }
+
