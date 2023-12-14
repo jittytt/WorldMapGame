@@ -14,9 +14,8 @@ let questions = new Map([
 let score=0;
 let numOfaskedQ=0;
 function checkAnswer(id){
-    ans=document.getElementById(id).value;
     numOfaskedQ+=1;
-    if(ans==ansArr[1].answer){
+    if(id==ansArr[numOfaskedQ-1]){
         score+=1;
         //display correct in a tag
     }
