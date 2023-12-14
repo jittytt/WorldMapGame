@@ -29,20 +29,24 @@ function buttonActivator()
 {
     document.getElementById('primaryButton').hidden = false;
 }
+
 //initialize score and asked questions as 0
 let score=0;
 let numOfaskedQ=0;
 function checkAnswer(id){
     numOfaskedQ+=1;
-    if(id==ansArr[numOfaskedQ-1]){
+    if(id==answer){
         score+=1;
         //display correct in a tag
+        document.getElementById('correct-or-wrong').innerHTML="Correct Answer";
     }
     else{
         //display wrong in a tag
+        document.getElementById('correct-or-wrong').innerHTML="Wrong Answer";
     }
     //activate next question button
-    document.getElementById('nextButton').disabled = true;
+    document.getElementById('next-question-button').disabled = true;
+    //call the function to calculate score%
     if(numOfaskedQ==qsArr.length){
         calculateTotalScore(score);
     }    
