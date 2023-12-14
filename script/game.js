@@ -24,8 +24,12 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
-function buttonActivator()
-{
+
+//nigin-dev
+/*This function is used to activate the  "Get Started" button only when the user has input something 
+has his/her name */
+const buttonActivator = () => {
+
     if(document.getElementById('firstName').value != '')
     {
         document.getElementById('primaryButton').hidden = false;
@@ -37,6 +41,9 @@ function buttonActivator()
 }
 
 // vyshnav-dev
+/*This function is used to store the Player's name and total number of questions to the localstorage
+ when the player decides to start his/her game */
+
 let myName;
 let myQuestions;
 const storeValues = () =>{
