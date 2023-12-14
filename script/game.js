@@ -100,3 +100,12 @@ const questionGeneration = () => {
         document.getElementById("question-part").innerHTML=que;
     }
 }
+
+
+let answerID;
+ 
+function SubmitButtonEnable(id)
+{
+    answerID = id;  
+    document.getElementById('submit-button').hidden = false;
+}
