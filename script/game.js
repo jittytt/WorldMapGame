@@ -25,6 +25,10 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
+function buttonActivator()
+{
+    document.getElementById('primaryButton').hidden = false;
+}
 
 // vyshnav-dev
 let myName;
@@ -37,11 +41,7 @@ const storeValues = () =>{
     localStorage.setItem('myName',myName);
     localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
 }
-//===================
 
-function buttonActivator()
-{
-    document.getElementById('primaryButton').hidden = false;
-}
+
 
 
