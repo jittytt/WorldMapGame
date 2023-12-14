@@ -109,7 +109,14 @@ const SubmitButtonEnable=(id)=>
     answerID = id;  
     document.getElementById('submit-button').hidden = false;
 }
-
+function onSound(){
+    aud=document.getElementById('yaay');
+    aud.play();
+}
+function WrongSound(){
+    aud=document.getElementById('wrong');
+    aud.play();
+}
 //boby-dev
 //initialize score as 0
 let correctAnswers = 0;
@@ -120,6 +127,7 @@ const answerComparision = () => {
     document.getElementById('map-cont').style.pointerEvents = "none";
     if(answerID == ans)
     {
+        onSound();
         correctAnswers++;
         totalNumberOfVisitedQuestions++;
         //display Correct
@@ -133,6 +141,7 @@ const answerComparision = () => {
     }
     else
     {
+        WrongSound();
         totalNumberOfVisitedQuestions++;
         //display wrong
         document.getElementById('correct-or-wrong').textContent = "Wrong!";
