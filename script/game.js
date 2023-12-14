@@ -55,3 +55,18 @@ const storeValues = () =>{
     localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
 }
 
+// elena-dev
+const visitedQuestions = [];  //This array avoids the duplicacy of questions
+let totalNumberOfVisitedQuestions = 0;
+
+ const randomNumberGeneration = () => {
+  let randomNumber;
+
+  do {
+    // Generates a random number between 1 and 10
+    randomNumber = Math.floor(Math.random() * 10) + 1; 
+  } while (visitedQuestions.includes(randomNumber)); //The loop exits until it finds a unique number.
+
+  visitedQuestions.push(randomNumber);
+  return randomNumber;
+}
