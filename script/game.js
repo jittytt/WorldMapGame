@@ -26,9 +26,15 @@ let answers = new Map([
 
 function buttonActivator()
 {
-    document.getElementById('primaryButton').hidden = false;
+    if(document.getElementById('firstName').value != '')
+    {
+        document.getElementById('primaryButton').hidden = false;
+    }
+    else
+    {
+        document.getElementById('primaryButton').hidden = true;
+    }
 }
-
 
 // vyshnav-dev
 let myName;
