@@ -24,7 +24,6 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
-
 function buttonActivator()
 {
     if(document.getElementById('firstName').value != '')
@@ -48,3 +47,4 @@ const storeValues = () =>{
     localStorage.setItem('myName',myName);
     localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
 }
+
