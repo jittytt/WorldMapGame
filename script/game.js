@@ -104,8 +104,53 @@ const questionGeneration = () => {
 
 let answerID;
  
-function SubmitButtonEnable(id)
+const SubmitButtonEnable=(id)=>
 {
     answerID = id;  
     document.getElementById('submit-button').hidden = false;
+}
+
+//boby-dev
+//initialize score as 0
+let correctAnswers = 0;
+//function to check the answer
+const answerComparision = () => {
+    document.getElementById('submit-button').hidden = true;
+    document.getElementById('next-question-button').hidden = false;
+    document.getElementById('map-cont').style.pointerEvents = "none";
+    if(answerID == ans)
+    {
+        correctAnswers++;
+        totalNumberOfVisitedQuestions++;
+        //display Correct
+        document.getElementById('correct-or-wrong').textContent = "CORRECT!";
+        document.getElementById('correct-or-wrong').style.color ="green";
+        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
+        document.getElementById('correct-or-wrong').style.fontSize ="32px";
+
+        console.log('Correct Answers:' + correctAnswers);
+        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
+    }
+    else
+    {
+        totalNumberOfVisitedQuestions++;
+        //display wrong
+        document.getElementById('correct-or-wrong').textContent = "Wrong!";
+        document.getElementById('correct-or-wrong').style.color ="red";
+        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
+        document.getElementById('correct-or-wrong').style.fontSize ="32px";
+
+        console.log('Correct Answers:' + correctAnswers);
+        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
+    }
+
+    if(totalNumberOfVisitedQuestions == numberOfQuestions)
+    {
+        //rename the next button as View result
+        document.getElementById('next-question-button').textContent="View Result";
+        document.getElementById('next-question-button').href='result.html';
+        localStorage.setItem('totalScore', correctAnswers);
+        evaluateScore();
+    }
+
 }
