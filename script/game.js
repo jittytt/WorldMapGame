@@ -29,7 +29,7 @@ let correctAnswers = 0;
 //function to check the answer
 const answerComparision = (id) => {
     document.getElementById('next-question-button').hidden = false;
-
+    document.getElementById('map-cont').style.pointerEvents = "none";
     if(id == ans)
     {
         correctAnswers++;
