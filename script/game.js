@@ -1,43 +1,42 @@
 let questions = new Map([
-    [1, "Which continent is India part of?"],
-    [2, "Which is the largest continent in area?"],
-    [3, "Which is the smallest continent in area?"],
-    [4, "Which continent is also called as an 'Island-Continent'?"],
-    [5, "The largest mountain in the world, Mount Everest is situated in which continent?"],
-    [6, "On Which Continent Is Egypt?"],
-    [7, "On which continent can you find France?"],
-    [8, "Which is the Second biggest continent of the world?"],
-    [9, "Columbus found which continent?"],
-    [10, "Where is Amazon River?"]
+  [1, "Which continent is India part of?"],
+  [2, "Which is the largest continent in area?"],
+  [3, "Which is the smallest continent in area?"],
+  [4, "Which continent is also called as an 'Island-Continent'?"],
+  [
+    5,
+    "The largest mountain in the world, Mount Everest is situated in which continent?",
+  ],
+  [6, "On Which Continent Is Egypt?"],
+  [7, "On which continent can you find France?"],
+  [8, "Which is the Second biggest continent of the world?"],
+  [9, "Columbus found which continent?"],
+  [10, "Where is Amazon River?"],
 ]);
 
 let answers = new Map([
-    [1, "Asia"],
-    [2, "Asia"],
-    [3, "Australia"],
-    [4, "Australia"],
-    [5, "Asia"],
-    [6, "Africa"],
-    [7, "Europe"],
-    [8, "Africa"],
-    [9, "North America"],
-    [10, "South America"],
+  [1, "Asia"],
+  [2, "Asia"],
+  [3, "Australia"],
+  [4, "Australia"],
+  [5, "Asia"],
+  [6, "Africa"],
+  [7, "Europe"],
+  [8, "Africa"],
+  [9, "North America"],
+  [10, "South America"],
 ]);
 
 //nigin-dev
 /*This function is used to activate the  "Get Started" button only when the user has input something 
 has his/her name */
 const buttonActivator = () => {
-
-    if(document.getElementById('firstName').value != '')
-    {
-        document.getElementById('primaryButton').hidden = false;
-    }
-    else
-    {
-        document.getElementById('primaryButton').hidden = true;
-    }
-}
+  if (document.getElementById("firstName").value != "") {
+    document.getElementById("primaryButton").hidden = false;
+  } else {
+    document.getElementById("primaryButton").hidden = true;
+  }
+};
 
 // vyshnav-dev
 /*This function is used to store the Player's name and total number of questions to the localstorage
@@ -48,147 +47,136 @@ const buttonActivator = () => {
 
 let myName;
 let myQuestions;
-const storeValues = () =>{
-    
-    myName = document.getElementById("firstName").value;
-    myQuestions = document.getElementById("number").value;//gets element's values to variables
+const storeValues = () => {
+  myName = document.getElementById("firstName").value;
+  myQuestions = document.getElementById("number").value; //gets element's values to variables
 
-    localStorage.setItem('myName',myName);
-    localStorage.setItem('myQuestions',myQuestions);//stores values to localstorage
-}
+  localStorage.setItem("myName", myName);
+  localStorage.setItem("myQuestions", myQuestions); //stores values to localstorage
+};
 
 // elena-dev
-const visitedQuestions = [];  //This array avoids the duplicacy of questions
+const visitedQuestions = []; //This array avoids the duplicacy of questions
 let totalNumberOfVisitedQuestions = 0;
 
- const randomNumberGeneration = () => {
+const randomNumberGeneration = () => {
   let randomNumber;
 
   do {
     // Generates a random number between 1 and 10
-    randomNumber = Math.floor(Math.random() * 10) + 1; 
+    randomNumber = Math.floor(Math.random() * 10) + 1;
   } while (visitedQuestions.includes(randomNumber)); //The loop exits until it finds a unique number.
 
   visitedQuestions.push(randomNumber);
   return randomNumber;
-}
+};
 
 //nigin-dev
 //This function is used for Generating random questions
 const questionGeneration = () => {
+  document.getElementById("map-cont").style.pointerEvents = "auto";
+  //Setting the question field as Empty
+  document.getElementById("correct-or-wrong").textContent = "";
 
-    document.getElementById('map-cont').style.pointerEvents = "auto";
-    //Setting the question field as Empty
-    document.getElementById('correct-or-wrong').textContent = ""; 
-    
-    //Hiding the button until the player selects an answer
-    document.getElementById('next-question-button').hidden = true; 
+  //Hiding the button until the player selects an answer
+  document.getElementById("next-question-button").hidden = true;
 
-    numberOfQuestions = localStorage.getItem('myQuestions');
-  
-    let randomNumberGenerated;
+  numberOfQuestions = localStorage.getItem("myQuestions");
 
-    //To check if the required number of questions have been visited
-    if(totalNumberOfVisitedQuestions < numberOfQuestions)
-    {
-        randomNumberGenerated = randomNumberGeneration();
+  let randomNumberGenerated;
 
-        //Storing the values in 2 variables for future use
-        que = questions.get(randomNumberGenerated);
-        ans = answers.get(randomNumberGenerated);
+  //To check if the required number of questions have been visited
+  if (totalNumberOfVisitedQuestions < numberOfQuestions) {
+    randomNumberGenerated = randomNumberGeneration();
 
-        //Printing the question in the webpage
-        document.getElementById("question-part").innerHTML=que;
-    }
-}
+    //Storing the values in 2 variables for future use
+    que = questions.get(randomNumberGenerated);
+    ans = answers.get(randomNumberGenerated);
 
+    //Printing the question in the webpage
+    document.getElementById("question-part").innerHTML = que;
+  }
+};
 
 let answerID;
- 
-const SubmitButtonEnable=(id)=>
-{
-    answerID = id;  
-    document.getElementById('submit-button').hidden = false;
-}
+
+const SubmitButtonEnable = (id) => {
+  answerID = id;
+  document.getElementById("submit-button").hidden = false;
+};
 
 //boby-dev
-function onSound(){
-    aud=document.getElementById('yaay'); //sound to play when answer is correct
-    aud.play();
+function onSound() {
+  aud = document.getElementById("yaay"); //sound to play when answer is correct
+  aud.play();
 }
 
-function WrongSound(){
-    aud=document.getElementById('wrong'); //sound to play when answer is wrong
-    aud.play();
+function WrongSound() {
+  aud = document.getElementById("wrong"); //sound to play when answer is wrong
+  aud.play();
 }
 
 //initialize score as 0
 let correctAnswers = 0;
 //function to check the answer
 const answerComparison = () => {
-    document.getElementById('submit-button').hidden = true;
-    document.getElementById('next-question-button').hidden = false;
-    document.getElementById('map-cont').style.pointerEvents = "none";
-    if(answerID == ans)
-    {
-        onSound();
-        correctAnswers++;
-        totalNumberOfVisitedQuestions++;
-        //display Correct
-        document.getElementById('correct-or-wrong').textContent = "CORRECT!";
-        document.getElementById('correct-or-wrong').style.color ="green";
-        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
-        document.getElementById('correct-or-wrong').style.fontSize ="32px";
+  document.getElementById("submit-button").hidden = true;
+  document.getElementById("next-question-button").hidden = false;
+  document.getElementById("map-cont").style.pointerEvents = "none";
+  if (answerID == ans) {
+    onSound();
+    correctAnswers++;
+    totalNumberOfVisitedQuestions++;
+    //display Correct
+    document.getElementById("correct-or-wrong").textContent = "CORRECT!";
+    document.getElementById("correct-or-wrong").style.color = "green";
+    document.getElementById("correct-or-wrong").style.fontWeight = "bold";
+    document.getElementById("correct-or-wrong").style.fontSize = "32px";
+  } else {
+    WrongSound();
+    totalNumberOfVisitedQuestions++;
+    //display wrong
+    document.getElementById("correct-or-wrong").textContent = "Wrong!";
+    document.getElementById("correct-or-wrong").style.color = "red";
+    document.getElementById("correct-or-wrong").style.fontWeight = "bold";
+    document.getElementById("correct-or-wrong").style.fontSize = "32px";
+  }
 
-    }
-    else
-    {
-        WrongSound();
-        totalNumberOfVisitedQuestions++;
-        //display wrong
-        document.getElementById('correct-or-wrong').textContent = "Wrong!";
-        document.getElementById('correct-or-wrong').style.color ="red";
-        document.getElementById('correct-or-wrong').style.fontWeight ="bold";
-        document.getElementById('correct-or-wrong').style.fontSize ="32px";
-
-    }
-
-    if(totalNumberOfVisitedQuestions == numberOfQuestions)
-    {
-        //rename the next button as View result
-        localStorage.setItem('totalScore', correctAnswers);
-        document.getElementById('next-question-button').textContent="View Result";
-        document.getElementById('next-question-button').href='result.html';
-        
-    }
-
-}
-
+  if (totalNumberOfVisitedQuestions == numberOfQuestions) {
+    //rename the next button as View result
+    localStorage.setItem("totalScore", correctAnswers);
+    document.getElementById("next-question-button").textContent = "View Result";
+    document.getElementById("next-question-button").href = "result.html";
+  }
+};
 
 //jitty-dev
 //evaluates the score of the game and displays it in new page
 const evaluateScore = () => {
-    let correctAnswers = localStorage.getItem("totalScore");         //retreiving values from localStorage
-    let totalQns = localStorage.getItem("myQuestions");
-    let name = localStorage.getItem("myName");
-    
-    let highScore = localStorage.getItem("currentHigh")|| "";
-    let highScorer = localStorage.getItem("currentHighScorer")|| "";
+  let correctAnswers = localStorage.getItem("totalScore"); //retreiving values from localStorage
+  let totalQns = localStorage.getItem("myQuestions");
+  let name = localStorage.getItem("myName");
 
-    capName = capitalizeFirstLetter(name);                           //capitilizing the first letter
+  let highScore = localStorage.getItem("currentHigh") || "";
+  let highScorer = localStorage.getItem("currentHighScorer") || "";
+
+  capName = capitalizeFirstLetter(name); //capitilizing the first letter
 
     let score = () => (100 * correctAnswers)/totalQns;              //score & percentage calculation
     let percentage = Math.round(score());
 
-    let compliment = document.createElement("h1");
-    let finalScore = document.createElement("h3");
+  let compliment = document.createElement("h1");
+  let finalScore = document.createElement("h3");
 
-    if(highScore < percentage ){
-      localStorage.setItem("currentHigh",percentage);
-      localStorage.setItem("currentHighScorer",capName);
-    }
+  if (highScore < percentage) {//resetting current highscore and highscorer
+    highScore = percentage;
+    highScorer = capName;
+    localStorage.setItem("currentHigh", percentage);
+    localStorage.setItem("currentHighScorer", capName);
+  }
 
-    if(percentage >= 50) {                                          //displaying compliments w.r.t score
+  if (percentage >= 50) {
+    //displaying compliments w.r.t score
 
         compliment.textContent = `Congratulations ${capName}!!`;
         compliment.setAttribute("style","color: black");
@@ -216,14 +204,17 @@ const evaluateScore = () => {
     finalScore.textContent = `${percentage}%`;
     document.getElementById("score-calc").append(finalScore);
 
+  if (highScore != "") {
     let highScoreNode = document.createElement("h5"); // creates new element to show highscore
     highScoreNode.textContent = `Current Highest Score:\xa0 \xa0 ${highScore}% \xa0 by \xa0 ${highScorer}`;
     document.getElementById("score-calc").append(highScoreNode);
-}
+  }
+};
 
-const capitalizeFirstLetter = (inputString) => {                                //function to capitalize first letter
-    return `${inputString.charAt(0).toUpperCase()}${inputString.slice(1)}`;
-}
+const capitalizeFirstLetter = (inputString) => {
+  //function to capitalize first letter
+  return `${inputString.charAt(0).toUpperCase()}${inputString.slice(1)}`;
+};
 
 
 
