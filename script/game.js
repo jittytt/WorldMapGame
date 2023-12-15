@@ -168,7 +168,7 @@ const evaluateScore = () => {
   let compliment = document.createElement("h1");
   let finalScore = document.createElement("h3");
 
-  if (highScore < percentage) {
+  if (highScore < percentage) {//resetting current highscore and highscorer
     highScore = percentage;
     highScorer = capName;
     localStorage.setItem("currentHigh", percentage);
