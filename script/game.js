@@ -171,6 +171,10 @@ const evaluateScore = () => {
     let correctAnswers = localStorage.getItem("totalScore");         //retreiving values from localStorage
     let totalQns = localStorage.getItem("myQuestions");
     let name = localStorage.getItem("myName");
+    
+    let highScore = localStorage.getItem("currentHigh")|| "";
+    let highScorer = localStorage.getItem("currentHighScorer")|| "";
+
     capName = capitalizeFirstLetter(name);                           //capitilizing the first letter
 
     let score = () => (100 * correctAnswers)/totalQns;              //score & percentage calculation
@@ -178,6 +182,11 @@ const evaluateScore = () => {
 
     let compliment = document.createElement("h1");
     let finalScore = document.createElement("h3");
+
+    if(highScore < percentage ){
+      localStorage.setItem("currentHigh",percentage);
+      localStorage.setItem("currentHighScorer",capName);
+    }
 
     if(percentage >= 50) {                                          //displaying compliments w.r.t score
 
@@ -201,12 +210,15 @@ const evaluateScore = () => {
             document.getElementById("stars").querySelector("img").setAttribute("src","./assets/1stars.png");
 
     }
-
+    //compliment.setAttribute("class","d-flex")
     document.getElementById("remark").append(compliment);
     
     finalScore.textContent = `${percentage}%`;
     document.getElementById("score-calc").append(finalScore);
 
+    let highScoreNode = document.createElement("h5"); // creates new element to show highscore
+    highScoreNode.textContent = `Current Highest Score:\xa0 \xa0 ${highScore}% \xa0 by \xa0 ${highScorer}`;
+    document.getElementById("score-calc").append(highScoreNode);
 }
 
 const capitalizeFirstLetter = (inputString) => {                                //function to capitalize first letter
