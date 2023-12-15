@@ -86,7 +86,6 @@ const questionGeneration = () => {
   let randomNumberGenerated;
 
   //To check if the required number of questions have been visited
-  if (totalNumberOfVisitedQuestions < numberOfQuestions) {
     randomNumberGenerated = randomNumberGeneration();
 
     //Storing the values in 2 variables for future use
@@ -95,7 +94,6 @@ const questionGeneration = () => {
 
     //Printing the question in the webpage
     document.getElementById("question-part").innerHTML = que;
-  }
 };
 
 let answerID;
@@ -209,6 +207,13 @@ const evaluateScore = () => {
     highScoreNode.textContent = `Current Highest Score:\xa0 \xa0 ${highScore}% \xa0 by \xa0 ${highScorer}`;
     document.getElementById("score-calc").append(highScoreNode);
   }
+
+  let buttonNode = document.createElement("a");
+  buttonNode.textContent = "NEW GAME";
+  buttonNode.href = "index.html";
+  document.getElementById("score-calc").append(buttonNode);
+  buttonNode.setAttribute("class","btn btn-primary");
+
 };
 
 const capitalizeFirstLetter = (inputString) => {
@@ -218,11 +223,8 @@ const capitalizeFirstLetter = (inputString) => {
 
 
 
-const mouseOver = () => {
-    // document.addEventListener('mouseover', () => {                                  //function to add visual effects
-    // Using setTimeout to delay the rotation for a better visual effect
+const mouseOver = () => {                               //function to add visual effects
     setTimeout(() => {
       document.querySelector('.score-board').style.transform = 'rotate(0deg)';
     }, 1000); 
-//   });
 }
