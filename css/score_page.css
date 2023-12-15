@@ -5,6 +5,9 @@
 body h1, h3 {
   margin-top: 10px;
 }
+body h1 {
+  margin-left: 30px;
+}
 .score-board {
   font-family: 'Acme';
 }

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Acme';
+  src: url(../fonts/Acme-Regular.ttf)
+}
+* {
+  font-family: 'Acme';
+}
 body {
     background-color: #f4f4f4;
     font-family: 'Acme';
