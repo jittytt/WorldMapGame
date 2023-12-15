@@ -226,5 +226,5 @@ const capitalizeFirstLetter = (inputString) => {
 const mouseOver = () => {                               //function to add visual effects
     setTimeout(() => {
       document.querySelector('.score-board').style.transform = 'rotate(0deg)';
-    }, 1000); 
+    }, 0); 
 }
