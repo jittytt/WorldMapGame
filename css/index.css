@@ -64,14 +64,14 @@ body, html {
   /* Styling for the footer */
   .footer {
     position: fixed; /* Fixed positioning at the bottom */
-    bottom: 0; /* Aligned to the bottom */
-    width: 100%; /* Full width */
-    text-align: center; /* Centering text */
-    color: #142d4c; /* Setting text color */
-    padding: 10px 0; /* Footer padding */
-    font-size: 1em; /* Footer text size */
-    border-style: none; /* Removing border */
-    font-weight: bold; /* Making the text bold */
+    bottom: 0;
+    width: 100%; 
+    text-align: center;
+    color: #142d4c; 
+    padding: 10px 0; 
+    font-size: 1em; 
+    border-style: none; 
+    font-weight: bold; 
   }
   /* Resetting default margin and padding for body and html elements */
 body, html {
@@ -80,13 +80,7 @@ body, html {
     height: 100%; /* Setting height to 100% to cover the entire viewport */
   }
   
-  /* Container for the video background */
-  .video-background {
-    position: relative;
-    width: 100%; 
-    height: 100%;
-    overflow: hidden; /* Hiding overflowing content */
-  }
+ 
   
   .video-instruction{
     min-height: 100%;
@@ -144,19 +138,19 @@ body, html {
   
   /* Styling for button hover */
   .btn:hover {
-    background-color: #2980b9; /* Button background color on hover */
+    background-color: #2980b9; 
   }
   
   /* Styling for the footer */
   .footer {
     position: fixed; /* Fixed positioning at the bottom */
-    bottom: 0; /* Aligned to the bottom */
-    width: 100%; /* Full width */
-    text-align: center; /* Centering text */
-    color: #142d4c; /* Setting text color */
-    padding: 10px 0; /* Footer padding */
-    font-size: 1em; /* Footer text size */
-    border-style: none; /* Removing border */
-    font-weight: bold; /* Making the text bold */
+    bottom: 0;
+    width: 100%; 
+    text-align: center; 
+    color: #142d4c; 
+    padding: 10px 0; 
+    font-size: 1em; 
+    border-style: none;
+    font-weight: bold;
   }
   

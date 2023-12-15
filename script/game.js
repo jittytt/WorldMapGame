@@ -174,31 +174,31 @@ const evaluateScore = () => {
     capName = capitalizeFirstLetter(name);                           //capitilizing the first letter
 
     let score = () => (100 * correctAnswers)/totalQns;              //score & percentage calculation
-    let percentage = score();
+    let percentage = Math.round(score());
 
     let compliment = document.createElement("h1");
     let finalScore = document.createElement("h3");
 
     if(percentage >= 50) {                                          //displaying compliments w.r.t score
 
-        compliment.textContent = `Congratulations! ${capName}`;
+        compliment.textContent = `Congratulations ${capName}!!`;
         compliment.setAttribute("style","color: black");
-        if(percentage >= 76 && percentage <= 100)
+        if(percentage == 100)
             document.getElementById("stars").querySelector("img").setAttribute("src","./assets/5stars.png");
-        else if(percentage >= 50 && percentage <= 75)
+        else if(percentage >= 80 && percentage <= 99)
             document.getElementById("stars").querySelector("img").setAttribute("src","./assets/4stars.png");
+        else if(percentage >= 60 && percentage <= 79)
+            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/3stars.png");
 
     }
     else {
 
         compliment.textContent = `Sorry ${capName}!! Better Luck Next Time!`;
         compliment.setAttribute("class","text-danger");
-        if(percentage > 0 && percentage <= 20)
-            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/5stars.png");
-        else if(percentage >= 21 && percentage <= 40)
-            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/4stars.png");
-        else if(percentage >= 41 && percentage < 50)
-            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/4stars.png");
+        if(percentage >= 40 && percentage <= 59)
+            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/2stars.png");
+        else if(percentage >= 0 && percentage <= 39)
+            document.getElementById("stars").querySelector("img").setAttribute("src","./assets/1stars.png");
 
     }
 
@@ -213,9 +213,13 @@ const capitalizeFirstLetter = (inputString) => {                                
     return `${inputString.charAt(0).toUpperCase()}${inputString.slice(1)}`;
 }
 
-document.addEventListener('mouseover', () => {                                  //function to add visual effects
+
+
+const mouseOver = () => {
+    // document.addEventListener('mouseover', () => {                                  //function to add visual effects
     // Using setTimeout to delay the rotation for a better visual effect
     setTimeout(() => {
       document.querySelector('.score-board').style.transform = 'rotate(0deg)';
     }, 1000); 
-  });
+//   });
+}
