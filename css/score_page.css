@@ -1,9 +1,25 @@
-body {
-    background-image: url("../assets/worldmap-3.avif");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-  }
+@font-face {
+  font-family: 'Acme';
+  src: url(../fonts/Acme-Regular.ttf)
+}
+body h1, h3 {
+  margin-top: 10px;
+  font-family: 'Acme';
+}
+.scored-display {
+  font-family: 'Acme';
+}
+.scored-display h4 {
+  font-size: 1.8rem;
+}
+.gif-bg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+  bottom: 0;
+  height: 100%;
+}
   .wrapper {
     display: flex;
     justify-content: center;
@@ -11,12 +27,27 @@ body {
     height: 100vh;
   } 
 
+  #stars {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  #stars img {
+    width: 100%;
+  }
+
 .score-board {
-    height: 250px;
-    width: 750px;
-    background-color: rgba(175, 168, 168, 0.5);
-    color: black;
-    text-align: center;
-    border-radius: 20px;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 60px 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transform: rotate(21deg);
+  transition: transform 1s ease-in-out;
   }
 
