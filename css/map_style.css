@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'Acme';
+  src: url(../fonts/Acme-Regular.ttf)
+}
 body {
     background-color: #f4f4f4;
+  }
+  body h1, button, p {
+    font-family: 'Acme';
   }
   
   .card {
