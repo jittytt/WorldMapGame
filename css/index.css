@@ -1,4 +1,11 @@
 /* Resetting default margin and padding for body and html elements */
+@font-face {
+  font-family: 'Acme';
+  src: url(../fonts/Acme-Regular.ttf)
+}
+* {
+  font-family: 'Acme';
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -31,7 +38,7 @@ body, html {
     position: absolute; 
     top: 50%;
     left: 50%; 
-    transform: translate(-50%, -70%); /* Adjusting vertical position */
+    transform: translate(-50%, -70%); /* Adjusting position */
     text-align: center; 
     color: #142d4c;
   }
@@ -40,7 +47,7 @@ body, html {
   .heading {
     font-size: 4em;
     margin-bottom: 20px; 
-    font-family: 'Comic Sans MS', cursive; 
+    letter-spacing: 2px;
   }
   
   /* Styling for the button */

@@ -2,11 +2,11 @@
   font-family: 'Acme';
   src: url(../fonts/Acme-Regular.ttf)
 }
+* {
+  font-family: 'Acme';
+}
 body {
     background-color: #f4f4f4;
-  }
-  body h1, button, p {
-    font-family: 'Acme';
   }
   
   .card {

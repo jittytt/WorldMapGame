@@ -188,7 +188,7 @@ const evaluateScore = () => {
     }
     else {
 
-        compliment.textContent = `Sorry ${capName}!! Better Luck Next Time!`;
+        compliment.textContent = `Sorry ${capName}!! \xa0 Better Luck Next Time!`;
         compliment.setAttribute("class","text-danger");
         if(percentage >= 40 && percentage <= 59)
             document.getElementById("stars").querySelector("img").setAttribute("src","./assets/2stars.png");
