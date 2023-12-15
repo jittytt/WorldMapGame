@@ -210,7 +210,7 @@ const evaluateScore = () => {
             document.getElementById("stars").querySelector("img").setAttribute("src","./assets/4stars.png");
 
     }
-
+    //compliment.setAttribute("class","d-flex")
     document.getElementById("remark").append(compliment);
     
     finalScore.textContent = `${percentage}%`;
