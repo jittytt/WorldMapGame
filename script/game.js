@@ -24,7 +24,6 @@ let answers = new Map([
     [10, "South America"],
 ]);
 
-
 //nigin-dev
 /*This function is used to activate the  "Get Started" button only when the user has input something 
 has his/her name */
@@ -41,6 +40,9 @@ const buttonActivator = () => {
 }
 
 // vyshnav-dev
+/*This function is used to store the Player's name and total number of questions to the localstorage
+ when the player decides to start his/her game */
+
 /*This function is used to store the Player's name and total number of questions to the localstorage
  when the player decides to start his/her game */
 
@@ -83,14 +85,13 @@ const questionGeneration = () => {
     document.getElementById('next-question-button').hidden = true; 
 
     numberOfQuestions = localStorage.getItem('myQuestions');
-    console.log(numberOfQuestions);
+  
     let randomNumberGenerated;
 
     //To check if the required number of questions have been visited
     if(totalNumberOfVisitedQuestions < numberOfQuestions)
     {
         randomNumberGenerated = randomNumberGeneration();
-        console.log(randomNumberGenerated);
 
         //Storing the values in 2 variables for future use
         que = questions.get(randomNumberGenerated);
@@ -109,15 +110,18 @@ const SubmitButtonEnable=(id)=>
     answerID = id;  
     document.getElementById('submit-button').hidden = false;
 }
-function onSound(){
-    aud=document.getElementById('yaay');
-    aud.play();
-}
-function WrongSound(){
-    aud=document.getElementById('wrong');
-    aud.play();
-}
+
 //boby-dev
+function onSound(){
+    aud=document.getElementById('yaay'); //sound to play when answer is correct
+    aud.play();
+}
+
+function WrongSound(){
+    aud=document.getElementById('wrong'); //sound to play when answer is wrong
+    aud.play();
+}
+
 //initialize score as 0
 let correctAnswers = 0;
 //function to check the answer
@@ -136,8 +140,6 @@ const answerComparison = () => {
         document.getElementById('correct-or-wrong').style.fontWeight ="bold";
         document.getElementById('correct-or-wrong').style.fontSize ="32px";
 
-        console.log('Correct Answers:' + correctAnswers);
-        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
     }
     else
     {
@@ -149,8 +151,6 @@ const answerComparison = () => {
         document.getElementById('correct-or-wrong').style.fontWeight ="bold";
         document.getElementById('correct-or-wrong').style.fontSize ="32px";
 
-        console.log('Correct Answers:' + correctAnswers);
-        console.log('Total number of visisted questions :' +totalNumberOfVisitedQuestions);
     }
 
     if(totalNumberOfVisitedQuestions == numberOfQuestions)
@@ -163,6 +163,7 @@ const answerComparison = () => {
     }
 
 }
+
 
 //jitty-dev
 //evaluates the score of the game and displays it in new page
