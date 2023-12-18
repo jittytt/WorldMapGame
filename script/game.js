@@ -128,10 +128,11 @@ const answerComparison = () => {
     correctAnswers++;
     totalNumberOfVisitedQuestions++;
     //display Correct
-    document.getElementById("correct-or-wrong").textContent = "CORRECT!";
-    document.getElementById("correct-or-wrong").style.color = "green";
-    document.getElementById("correct-or-wrong").style.fontWeight = "bold";
-    document.getElementById("correct-or-wrong").style.fontSize = "32px";
+    btn=document.getElementById("correct-or-wrong");
+    btn.textContent = "CORRECT!";
+    btn.style.color = "green";
+    btn.style.fontWeight = "bold";
+    btn.style.fontSize = "32px";
   } else {
     WrongSound();
     totalNumberOfVisitedQuestions++;
